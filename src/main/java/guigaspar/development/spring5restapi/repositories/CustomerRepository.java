@@ -1,9 +1,9 @@
 package guigaspar.development.spring5restapi.repositories;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
 import guigaspar.development.spring5restapi.domain.Customer;
 
-public interface CustomerRepository extends CrudRepository<Customer, String>{
+public interface CustomerRepository extends MongoRepository<Customer, String>{
 
 }

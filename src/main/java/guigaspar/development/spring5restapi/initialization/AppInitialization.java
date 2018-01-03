@@ -11,6 +11,9 @@ import guigaspar.development.spring5restapi.domain.Phone;
 import guigaspar.development.spring5restapi.domain.PhoneType;
 import guigaspar.development.spring5restapi.repositories.CustomerRepository;
 
+/**
+ * @author Guilherme Gaspar - 03/01/2018
+ */
 @Component
 public class AppInitialization implements CommandLineRunner{
 	
