@@ -1,4 +1,4 @@
-package guigaspar.development.spring5restapi.services;
+package guigaspar.development.spring5restapi.exception;
 
 public class ResourceNotFoundException extends RuntimeException {
 

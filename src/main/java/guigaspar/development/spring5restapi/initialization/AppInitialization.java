@@ -1,15 +1,19 @@
 package guigaspar.development.spring5restapi.initialization;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import guigaspar.development.spring5restapi.domain.Address;
+import guigaspar.development.spring5restapi.domain.Authority;
 import guigaspar.development.spring5restapi.domain.Customer;
 import guigaspar.development.spring5restapi.domain.Phone;
 import guigaspar.development.spring5restapi.domain.PhoneType;
+import guigaspar.development.spring5restapi.domain.User;
 import guigaspar.development.spring5restapi.repositories.CustomerRepository;
+import guigaspar.development.spring5restapi.repositories.UserRepository;
 
 /**
  * @author Guilherme Gaspar - 03/01/2018
@@ -18,13 +22,38 @@ import guigaspar.development.spring5restapi.repositories.CustomerRepository;
 public class AppInitialization implements CommandLineRunner{
 	
 	private CustomerRepository customerRepository;
+	private UserRepository userRepository;
 	
-	public AppInitialization(CustomerRepository customerRepository) {
+	public AppInitialization(CustomerRepository customerRepository, UserRepository userRepository) {
 		this.customerRepository = customerRepository;
+		this.userRepository = userRepository;
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
+		if(userRepository.findAll().isEmpty()){
+			createCustomers();	
+			createAdminUser();
+		}	
+	}
+
+	private void createAdminUser() {
+		User user = new User();
+
+        user.setUsername("admin");
+        user.setPassword("root");
+        user.setAccountNonExpired(false);
+        user.setCredentialsNonExpired(false);
+        user.setEnabled(true);
+
+        List<Authority> authorities = new ArrayList<>();
+        authorities.add(Authority.ROLE_ADMIN);
+        user.setAuthorities(authorities);
+        userRepository.save(user);
+		
+	}
+
+	private void createCustomers() {
 		ArrayList<Phone> phones = new ArrayList<Phone>();
 		
 		Phone phone1 = new Phone();
@@ -70,8 +99,7 @@ public class AppInitialization implements CommandLineRunner{
 		cust2.setAddress(address2);
 		
 		customerRepository.save(cust1);
-		customerRepository.save(cust2);	
-		
+		customerRepository.save(cust2);
 	}
 	
 }

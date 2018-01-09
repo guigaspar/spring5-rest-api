@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 import guigaspar.development.spring5restapi.domain.Customer;
+import guigaspar.development.spring5restapi.exception.ResourceNotFoundException;
 import guigaspar.development.spring5restapi.mapper.CustomerMapper;
 import guigaspar.development.spring5restapi.model.CustomerDTO;
 import guigaspar.development.spring5restapi.repositories.CustomerRepository;
