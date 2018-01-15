@@ -3,10 +3,11 @@ package guigaspar.development.spring5restapi.security.services;
 import java.util.List;
 
 import guigaspar.development.spring5restapi.domain.User;
+import guigaspar.development.spring5restapi.model.UserDTO;
 
 public interface UserService {
 
-    User create(User object);
+    User create(UserDTO object);
 
     User find(String id);
 
