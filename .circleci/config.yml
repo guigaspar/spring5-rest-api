@@ -42,16 +42,3 @@ jobs:
 
       - store_test_results:
           path: target/surefire-reports
-
-      - run:
-          name: Send to CodeCov
-          command: bash <(curl -s https://codecov.io/bash)
-
-dependencies:
-  override:
-    - sudo apt-get purge mongodb-org*
-    - sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
-    - echo "deb http://repo.mongodb.org/apt/ubuntu precise/mongodb-org/3.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.0.list
-    - sudo apt-get update
-    - sudo apt-get install -y mongodb-org
-    - sudo service mongod restart
