@@ -30,7 +30,6 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
       
-      - run: 
       - run: mvn dependency:go-offline
 
       - save_cache:
@@ -47,7 +46,7 @@ jobs:
       - run:
           name: Send to CodeCov
           command: bash <(curl -s https://codecov.io/bash)
-          
+
 dependencies:
   override:
     - sudo apt-get purge mongodb-org*
