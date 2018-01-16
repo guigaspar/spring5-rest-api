@@ -1,6 +1,6 @@
 # Spring Framework 5 Rest API 
 
-[![CircleCI](https://circleci.com/gh/guigaspar/spring5-rest-api.svg?style=svg)](https://circleci.com/gh/guigaspar/spring5-rest-api)
+[![CircleCI](https://circleci.com/gh/guigaspar/spring5-rest-api.svg?style=svg)](https://circleci.com/gh/guigaspar/spring5-rest-api) [![codecov](https://codecov.io/gh/guigaspar/spring5-rest-api/branch/master/graph/badge.svg)](https://codecov.io/gh/guigaspar/spring5-rest-api)
 
 ### Spring Boot 2 project using Spring Security with JWT and MongoDB(Swagger, Lombok, MapStruct)
 
