@@ -2,20 +2,22 @@
 
 [![CircleCI](https://circleci.com/gh/guigaspar/spring5-rest-api.svg?style=shield)](https://circleci.com/gh/guigaspar/spring5-rest-api) [![codecov](https://codecov.io/gh/guigaspar/spring5-rest-api/branch/master/graph/badge.svg)](https://codecov.io/gh/guigaspar/spring5-rest-api)
 
-### Spring Boot 2 project using Spring Security with JWT and MongoDB(Swagger, Lombok, MapStruct)
+### Spring Boot 2 project using Spring Security with JWT and MongoDB.
 
 ---
 
-This is an Spring project made by Guillherme Gaspar, it's one API that record Customers. To access the API, the user must be authenticated.
+This is an Spring Boot project made by Guillherme Gaspar, it's one API that record Customers.
+I developed this API using technologies like: 
+- Spring Boot 2
+- Spring Security with JWT Authentication
+- MongoDB
+- Docker
+- Lombok/MapStruct 
+
+We can list, find, create, update and delete customers from the NoSQL database. For all these operations the user must be authenticated. The delete endpoint it's allowed just to the admin user. I'm using CircleCI to continuous integration and CodeCov for tests coverage.
+
 
 ### Running
-* Download this base
-* Start the MongoDB service/daemon in your system 
+* Download this project
+* Start the MongoDB service/daemon in your system on port 27017(default)
 * Run project by `Application.class` or by `mvn clean install`, `java -jar target/*.jar`, or by `mvn spring-boot:run`
-
-Links:
-http://www.littlebigextra.com/how-to-connect-to-spring-boot-rest-service-to-mongo-db-in-docker/
-https://github.com/abhishek-galoda/Docker-Spring-Boot-MVC-MongoDB/blob/master/Dockerfile
-https://www.3pillarglobal.com/insights/building-a-microservice-architecture-with-spring-boot-and-docker-part-iii
-https://medium.com/@hudsonmendes/docker-spring-boot-microservice-with-gradle-9785087e7992
-https://github.com/vojtechruz/spring-core-cert-notes-4.2/blob/master/Spring%20Core%20Certification%20Notes%204.2.md#spring-profiles
