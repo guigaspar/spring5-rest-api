@@ -25,6 +25,8 @@
 	    <org.mapstruct.version>1.2.0.CR2</org.mapstruct.version>
 	    <swagger.version>2.7.0</swagger.version>
 	    <jjwt.version>0.9.0</jjwt.version>
+	    <docker.image.prefix>guilherme</docker.image.prefix>
+		<docker.image.name>springrestapi</docker.image.name>
 	</properties>
 
 	<dependencies>
@@ -130,6 +132,58 @@
                     </compilerArgs>
                 </configuration>
             </plugin>
+            <plugin>
+				<groupId>io.fabric8</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.22.0</version>
+				<configuration>
+                    <dockerHost>npipe:////./pipe/docker_engine</dockerHost>
+                    <verbose>true</verbose>
+					<images>
+						<image>
+							<name>${docker.image.prefix}/${docker.image.name}</name>
+							<build>
+								<dockerFileDir>${project.basedir}/src/main/docker/</dockerFileDir>
+								<assembly>
+									<descriptorRef>artifact</descriptorRef>
+								</assembly>
+								<tags>
+									<tag>latest</tag>
+									<tag>${project.version}</tag>
+								</tags>
+							</build>
+							<run>
+                                <ports>
+                                    <port>8080:8080</port>
+                                </ports>
+                                <links>
+                                    <link>mymongo:mongo</link>
+                                </links>
+                                <env>
+                                    <SPRING_DATA_MONGODB_HOST>mongo</SPRING_DATA_MONGODB_HOST>
+                                </env>
+                                <dependsOn>
+                                    <container>mymongo</container>
+                                </dependsOn>
+                            </run>
+						</image>
+						
+						<image>
+                            <name>mongo</name>
+                            <alias>mymongo</alias>
+                            <run>
+                                <ports>
+                                    <port>27017</port>
+                                </ports>
+                                <wait>
+                                    <time>10000</time>
+                                </wait>
+                            </run>
+                        </image>
+                        
+					</images>
+				</configuration>
+			</plugin>
         </plugins>
     </build>
 
