@@ -23,7 +23,7 @@ public class SignUpController {
     }
 
     @PostMapping
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.CREATED)
     @ApiOperation(value = "Create user")
     public User signUp(@RequestBody final UserDTO dto) {
         return service.create(dto);
